@@ -1,0 +1,21 @@
+
+<br>
+<label for="newTopics"> <h5>หัวข้อข่าว</h5></label>
+<input type="name" [(ngModel)]="newTopics" name="newTopics" placeholder="Topics..">
+
+<label for="newContent"> <h5>เนื้อหาข่าว</h5></label>
+<textarea [(ngModel)]="newContent" name="newContent" placeholder="Content.."></textarea>
+<input type="submit" value="Add a new" (click)="createNew()">
+
+<ul *ngFor="let new of news | async">
+  <li (click)="getNew(new.id)">
+    <strong>{{ new.data.newTopics }} (<a  (click)="deleteNew(new.id)">delete</a>)</strong>
+    <br>
+    {{ new.data.newContent }}
+  </li>
+</ul>
+
+<h1>A specific new:</h1>
+
+<h3>{{ (new | async)?.newTopics }}</h3>
+<p>{{ (new | async)?.newContent }}</p>

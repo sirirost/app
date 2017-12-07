@@ -1,0 +1,18 @@
+
+
+ <div *ngIf="afAuth.user | async; then authenticated else guest">
+    <!-- template will replace this div -->
+</div>
+<!-- User NOT logged in -->
+<ng-template #guest>
+<h3>ยินดีต้อนรับ</h3>
+<p>เข้าสู่ระบบเพื่อเริ่มต้น ...</p>
+
+<button (click)="afAuth.loginGoogle()">
+    <i class="fa fa-google"></i> Connect Google
+</button>
+<button (click)="afAuth.loginFacebook()">
+    <i class="fa fa-google"></i> Connect Facebook
+</button>
+</ng-template>
+

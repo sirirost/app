@@ -1,0 +1,32 @@
+
+
+  <div class="form-group">
+    <label>Type</label>
+    <select class="form-control" type="text" [(ngModel)]="plantname" name="plantname" required>
+      <option value="ข้าว">ข้าว</option>
+      <option value="ข้าวโพด">ข้าวโพด</option>
+      <option value="หอมใหญ่">หอมใหญ่</option>
+      <option value="หอมแดง">หอมแดง</option>
+      <option value="คะน้า">คะน้า</option>
+    </select>
+  </div>
+<input type="text" [(ngModel)]="rai" name="rai" placeholder="ไร่..">
+<textarea [(ngModel)]="ngan" name="ngan" placeholder="งาน.."></textarea>
+<textarea [(ngModel)]="squarewa" name="squarewa" placeholder="ตารางวา.."></textarea>
+<input type="submit" value="Add a Post" (click)="addPostplant()">
+
+
+<ul *ngFor="let postplant of postplants | async">
+  <li (click)="getPostplant(post.id)">
+    <strong>{{ postplant.data.plantname }} (<a href="#" (click)="deletePostplant(post.id)">delete</a>)</strong>
+    <br>
+    {{ postplant.data.content }}
+  </li>
+</ul>
+
+<h1>A specific post:</h1>
+
+<h3>{{ (postplant | async)?.plantname }}</h3>
+<p>{{ (postplant | async)?.rai }}</p>
+<h3>{{ (postplant | async)?.ngan }}</h3>
+<p>{{ (postplant | async)?.squarewa }}</p>

@@ -1,0 +1,21 @@
+
+<br>
+<label for="topics"> <h5>Topics</h5></label>
+<input type="name" [(ngModel)]="topics" name="topics" placeholder="Topics..">
+
+<label for="content"> <h5>Content</h5></label>
+<textarea [(ngModel)]="content" name="content" placeholder="Content.."></textarea>
+<input type="submit" value="Add a Post" (click)="createItem()">
+
+<ul *ngFor="let plantcare of plantcares | async">
+  <li (click)="getPost(plantcare.id)">
+    <strong>{{ plantcare.data.topics }} (<a  (click)="deletePost(plantcare.id)">delete</a>)</strong>
+    <br>
+    {{ plantcare.data.content }}
+  </li>
+</ul>
+
+<h1>A specific plantcare:</h1>
+
+<h3>{{ (plantcare | async)?.topics }}</h3>
+<p>{{ (plantcare | async)?.content }}</p>

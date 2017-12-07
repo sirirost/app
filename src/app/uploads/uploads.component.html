@@ -1,0 +1,68 @@
+<!-- <div class="container">
+    <div *ngIf="upload">
+      <div class="progress">
+        <div class="progress-bar progress-bar-animated" 
+        [ngStyle]="{ 'width': upload?.progress + '%' }"></div>
+      </div>
+      Progress: {{upload?.progress}}% Complete
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <label>Topics</label>
+            <input class="form-control" type="text" [(ngModel)]="newTopics" name="newTopics" required>
+          </div>
+          <div class="form-group">
+              <label>Content</label>
+              <input class="form-control" type="text" [(ngModel)]="newContent" name="newContent" required>
+            </div>
+      <h2 class="heading">Upload New Images</h2>
+      <input type="file" 
+      (change)="handleFiles($event)" multiple>
+      <button class="btn btn-primary" 
+      (click)="uploadFiles()">Upload Images</button>
+    </div>
+  </div> -->
+
+
+
+  <a [routerLink]="['/Gallerys']">Back</a>
+  <br />
+  <h2 class="page-header">Add Listing</h2>
+  <form (submit)="onAddSubmit()">
+    <div class="form-group">
+      <label>Title</label>
+      <input class="form-control" type="text" [(ngModel)]="title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label>City</label>
+      <input class="form-control" type="text" [(ngModel)]="city" name="city" required>
+    </div>
+    <div class="form-group">
+      <label>Owner</label>
+      <input class="form-control" type="text" [(ngModel)]="owner" name="owner" required>
+    </div>
+    <div class="form-group">
+      <label>Bedrooms</label>
+      <input class="form-control" type="number" [(ngModel)]="bedrooms" name="bedrooms" required>
+    </div>
+    <div class="form-group">
+      <label>Type</label>
+      <select class="form-control" type="text" [(ngModel)]="type" name="type" required>
+        <option value="Estate">Estate</option>
+        <option value="Condo">Condo</option>
+        <option value="Apartment">Apartment</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input id="image" name="image" [(ngModel)]="image" type="file" >
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <input class="form-control" type="text" [(ngModel)]="price" name="price" required>
+    </div>
+    <input type="submit" value="submit" class="btn btn-success">
+  </form>
+
+
+  
+  

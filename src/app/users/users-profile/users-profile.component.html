@@ -1,0 +1,38 @@
+<!-- <h1 *ngIf="authService.authState | async">Welcome {{ ( authService.authState | async)?.email }}!   </h1>
+
+<h1>ข้อมูลสมาชิก</h1>
+<h1>{{title}}</h1>
+<form (ngSubmit)="addProfile(ProfileForm)" #ProfileForm="ngForm">
+<label for="firstname"> ชื่อ</label>
+<input type="text" name="firstname" ngModel [(ngModel)]="firstname">
+
+<label for="lastname"> สกุล</label>
+<textarea name="lastname" ngModel [(ngModel)]="lastname"></textarea><br>
+
+<label for="address"> ที่อยู่</label>
+<textarea name="address" ngModel [(ngModel)]="address"></textarea><br>
+
+<label for="IDcard"> เลขบัตรประชาชน</label>
+<textarea name="IDcard" ngModel [(ngModel)]="IDcard"></textarea><br>
+
+
+<button type="submit" >สมัครสมาชิก</button>
+</form>
+ -->
+
+ <div *ngIf="afAuth.user | async; then authenticated else guest">
+    <!-- template will replace this div -->
+</div>
+
+<!-- User logged in -->
+<ng-template #authenticated>
+<div *ngIf="afAuth.user | async as user">
+    <h3>ยินดีต้อนรับ {{ user.displayName }}</h3>
+    <img  [src]="user.photoURL">
+    <p>UID: {{ user.uid }}</p>
+</div>
+<div *ngIf="afAuth.user | async as user">
+    <button (click)="afAuth.logout()">Logout</button>
+</div>
+</ng-template>
+
