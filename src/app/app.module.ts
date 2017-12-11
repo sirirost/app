@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule} from '@angular/forms';
@@ -26,8 +26,10 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
 import { ImageService } from './image.service';
 import { UploadsService } from './uploads.service';
 import { AddFarmerinformationComponent } from './add-farmerinformation/add-farmerinformation.component';
+import { AgmCoreModule } from '@agm/core';
+import { GoogleMapComponent } from './google-map/google-map.component';
+import { GeoService } from './geo.service';
 
- 
 
 const routes: Routes = [
                         {path: 'UsersProfiles', component: UsersProfileComponent},
@@ -39,6 +41,7 @@ const routes: Routes = [
                         { path: 'image/:id', component: ImageDetailComponent, },
                         { path: '', redirectTo: '/gallery', pathMatch: 'full'},
                         {path: 'Addfanerinfo', component: AddFarmerinformationComponent},
+                        {path: 'GoogleMap', component: GoogleMapComponent},
                         
                         ];
 
@@ -54,6 +57,7 @@ const routes: Routes = [
     GalleryComponent,
     ImageDetailComponent,
     AddFarmerinformationComponent,
+    GoogleMapComponent,
   
   ],
   imports: [
@@ -65,11 +69,15 @@ const routes: Routes = [
     AngularFirestoreModule,
     RouterModule.forRoot(routes),
     CoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDUsmO5uuoyZdsuv4y9qXlU2-r764QdoBQ'
+    })
     
    
   ],
-  providers: [AuthService,ImageService,UploadsService],
+  providers: [AuthService,ImageService,UploadsService, GeoService],
+  schemas:[ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

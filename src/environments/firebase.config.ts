@@ -6,4 +6,8 @@ export const firebaseConfig = {
     projectId: "margadh-13dd1",
     storageBucket: "margadh-13dd1.appspot.com",
     messagingSenderId: "532055046830"
+  
+    
   };
+
+  
